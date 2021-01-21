@@ -11,6 +11,8 @@
   `--include-submodules` flag to `dune-release`, `dune-release bistro` or
   `dune-release distrib` (#300, @NathanReb)
 - Support 'git://' scheme for dev-repo uri (#331, @gpetiot)
+- Add a new command `check` to check the prerequisites of dune-release and
+  avoid starting a release process that couldn't be finished (#318, @pitag-ha)
 
 ### Changed
 

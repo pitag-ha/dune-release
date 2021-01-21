@@ -1,0 +1,9 @@
+(executables
+ (names make_lint_directory_deterministic make_test_directory_deterministic)
+ (libraries re))
+
+(mdx
+ (files run.t)
+ (packages dune-release)
+ (preludes make_lint_directory_deterministic.exe
+   make_test_directory_deterministic.exe))

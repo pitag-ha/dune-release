@@ -17,7 +17,9 @@ let path_arg = Arg.conv Fpath.(of_string, pp)
 let named f = Cmdliner.Term.(app (const f))
 
 let dist_tag =
-  let doc = "The tag from which the distribution archive is built." in
+  let doc =
+    "The tag from which the distribution archive is or will be built."
+  in
   named
     (fun x -> `Dist_tag x)
     Arg.(
@@ -157,6 +159,21 @@ let include_submodules =
   named
     (fun x -> `Include_submodules x)
     Arg.(value & flag & info [ "include-submodules" ] ~doc)
+
+let skip_lint =
+  let doc = "Do not lint the archive distribution." in
+  named (fun x -> `Skip_lint x) Arg.(value & flag & info [ "skip-lint" ] ~doc)
+
+let skip_build =
+  let doc = "Do not try to build the package from the archive." in
+  named (fun x -> `Skip_build x) Arg.(value & flag & info [ "skip-build" ] ~doc)
+
+let skip_tests =
+  let doc =
+    "Do not try to build and run the package tests from the archive. Implied \
+     by $(b,--skip-build)."
+  in
+  named (fun x -> `Skip_tests x) Arg.(value & flag & info [ "skip-tests" ] ~doc)
 
 (* Terms *)
 
